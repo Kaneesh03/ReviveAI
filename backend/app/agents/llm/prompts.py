@@ -22,6 +22,11 @@ IMPORTANT RULES:
 9. Prioritize expected recovery value when comparing
    opportunities.
 10. If a payment is ineligible, do not recommend retrying it.
+11. For INELIGIBLE payments:
+    - DO NOT say "0.00% probability" or "₹0 expected recovery" unless these values were explicitly returned by the tools.
+    - Instead, clearly state: "Recovery probability was not calculated because this payment is not eligible for recovery."
+    - And state: "Expected recovery value was not calculated because recovery is blocked by policy."
+    - Make sure the explanation exactly aligns with the deterministic eligibility result.
 
 The system separates:
 - deterministic policy decisions

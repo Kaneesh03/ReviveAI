@@ -150,16 +150,15 @@ def make_recovery_decision(
     # Recommended action
     # --------------------------------------------------------
 
-    if priority == "HIGH":
-
+    if retry_count >= 2:
+        action = "ESCALATE_TO_HUMAN"
+    elif failure_reason in ["insufficient_funds", "card_expired"]:
+        action = "SEND_PAYMENT_REMINDER"
+    elif priority == "HIGH":
         action = "RETRY_PAYMENT"
-
     elif priority == "MEDIUM":
-
         action = "RETRY_WITH_CAUTION"
-
     else:
-
         action = "DEFER_RECOVERY"
 
     return RecoveryDecision(
